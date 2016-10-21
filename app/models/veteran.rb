@@ -44,13 +44,13 @@ class Veteran < ActiveRecord::Base
   end
 
   def send_slack_invitation
-    SlackInviterJob.perform_later(email)
+    # SlackInviterJob.perform_later(email)
   end
 
   def add_to_mailchimp
-    MailchimpInviterJob.perform_later(
-      email: email, first_name: first_name, last_name: last_name
-    )
+    # MailchimpInviterJob.perform_later(
+    #   email: email, first_name: first_name, last_name: last_name
+    # )
   end
 
   def mentor?
@@ -58,7 +58,7 @@ class Veteran < ActiveRecord::Base
   end
 
   def welcome_from!(mentor)
-    MenteeMailer.welcome(mentor: mentor, mentee: self).deliver_later
+    # MenteeMailer.welcome(mentor: mentor, mentee: self).deliver_later
     update_attributes(welcomed: true, mentor: mentor)
   end
 end
